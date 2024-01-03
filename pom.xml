@@ -28,6 +28,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>17</java.version>
 
         <video-management-application.version>1.0-SNAPSHOT</video-management-application.version>
         <video-management-container.version>1.0-SNAPSHOT</video-management-container.version>
