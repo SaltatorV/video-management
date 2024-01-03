@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.1</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.video.management</groupId>
+    <artifactId>video-management</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+    <modules>
+        <module>video-management-application</module>
+        <module>video-management-service</module>
+        <module>video-management-domain</module>
+        <module>video-management-container</module>
+        <module>video-management-dataaccess</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <video-management-application.version>1.0-SNAPSHOT</video-management-application.version>
+        <video-management-container.version>1.0-SNAPSHOT</video-management-container.version>
+        <video-management-dataaccess.version>1.0-SNAPSHOT</video-management-dataaccess.version>
+        <video-management-domain.version>1.0-SNAPSHOT</video-management-domain.version>
+        <video-management-service.version>1.0-SNAPSHOT</video-management-service.version>
+
+        <spring-boot-starter.version>3.2.1</spring-boot-starter.version>
+        <lombok.version>1.18.30</lombok.version>
+        <mockito-core.version>5.8.0</mockito-core.version>
+        <maven-surefire-plugin.version>3.2.3</maven-surefire-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.video.management.application</groupId>
+                <artifactId>video-management-application</artifactId>
+                <version>${video-management-application.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.video.management.container</groupId>
+                <artifactId>video-management-container</artifactId>
+                <version>${video-management-container.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.video.management.dataaccess</groupId>
+                <artifactId>video-management-dataaccess</artifactId>
+                <version>${video-management-dataaccess.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.video.management.domain</groupId>
+                <artifactId>video-management-domain</artifactId>
+                <version>${video-management-domain.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.video.management.service</groupId>
+                <artifactId>video-management-service</artifactId>
+                <version>${video-management-service.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot-starter.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito-core.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
