@@ -1,6 +1,7 @@
 package com.video.management.container;
 
 import com.video.management.service.dto.response.MessageResponse;
+import com.video.management.service.dto.response.VideoDataResponse;
 import com.video.management.service.port.input.UserCommandFacade;
 import com.video.management.service.port.input.UserQueryFacade;
 import com.video.management.service.port.input.VideoQueryFacade;
@@ -17,7 +18,7 @@ public class BeanConfiguration {
         return new UserCommandFacade() {
             @Override
             public MessageResponse addVideoToUserFavorites(String username, String title) {
-                return new MessageResponse("Success");
+                return MessageResponse.create("Success");
             }
         };
     }
@@ -26,8 +27,8 @@ public class BeanConfiguration {
     UserQueryFacade userQueryFacade() {
         return new UserQueryFacade() {
             @Override
-            public List<Object> findUserFavorites(String username) {
-                return List.of("Video-1", "Video-2");
+            public List<VideoDataResponse> findUserFavorites(String username) {
+                return List.of(createAvatarTheWayOfWaterVideoResponse());
             }
         };
     }
@@ -36,9 +37,16 @@ public class BeanConfiguration {
     VideoQueryFacade videoQueryFacade() {
         return new VideoQueryFacade() {
             @Override
-            public Object findVideo(String title) {
-                return "Video-1";
+            public VideoDataResponse findVideo(String title) {
+                return createAvatarTheWayOfWaterVideoResponse();
             }
         };
+    }
+
+    private VideoDataResponse createAvatarTheWayOfWaterVideoResponse() {
+        return VideoDataResponse.create("Avatar: The Way of Water",
+                "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora.",
+                "Action, Adventure, Fantasy", "James Cameron",
+                "scheme://host:port/images/{size}/{poster_name}");
     }
 }

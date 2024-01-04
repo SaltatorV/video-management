@@ -1,7 +1,9 @@
 package com.video.management.service.port.input;
 
+import com.video.management.service.dto.response.VideoDataResponse;
+
 import java.util.List;
 
 public interface UserQueryFacade {
-    List<Object> findUserFavorites(String username);
+    List<VideoDataResponse> findUserFavorites(String username);
 }

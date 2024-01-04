@@ -1,5 +1,6 @@
 package com.video.management.application.api;
 
+import com.video.management.service.dto.response.VideoDataResponse;
 import com.video.management.service.port.input.VideoQueryFacade;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -33,7 +34,7 @@ public class VideoQueryController {
             )
     })
     @GetMapping("{title}")
-    public Object fetchVideo(
+    public VideoDataResponse fetchVideo(
             @Parameter(description = "Name of the video whose data is to be fetched.", required = true)
             @PathVariable String title) {
         return facade.findVideo(title);

@@ -39,6 +39,6 @@ public class UserCommandControllerTest {
     }
 
     private MessageResponse createSuccessfullMessageResponse() {
-        return new MessageResponse("Success");
+        return MessageResponse.create("Success");
     }
 }

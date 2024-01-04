@@ -1,5 +1,6 @@
 package com.video.management.application.api;
 
+import com.video.management.service.dto.response.VideoDataResponse;
 import com.video.management.service.port.input.UserQueryFacade;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +26,7 @@ public class UserQueryControllerTest {
     public void shouldFetch1FavoriteVideo() {
         //given
         var username = "username";
-        var expected = createListWithOneVideo();
+        var expected = createListWithAvatar();
         doReturn(expected)
                 .when(facade)
                 .findUserFavorites(username);
@@ -37,8 +38,15 @@ public class UserQueryControllerTest {
         assertEquals(expected, result);
     }
 
-    private List<Object> createListWithOneVideo(){
-        return List.of("Video-1");
+    private List<VideoDataResponse> createListWithAvatar() {
+        return List.of(createAvatarTheWayOfWaterVideoResponse());
+    }
+
+    private VideoDataResponse createAvatarTheWayOfWaterVideoResponse() {
+        return VideoDataResponse.create("Avatar: The Way of Water",
+                "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora.",
+                "Action, Adventure, Fantasy", "James Cameron",
+                "scheme://host:port/images/{size}/{poster_name}");
     }
 
 }

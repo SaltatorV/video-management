@@ -1,6 +1,8 @@
 package com.video.management.service.port.input;
 
+import com.video.management.service.dto.response.VideoDataResponse;
+
 public interface VideoQueryFacade {
 
-    Object findVideo(String title);
+    VideoDataResponse findVideo(String title);
 }
