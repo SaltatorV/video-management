@@ -12,4 +12,10 @@
     <groupId>com.video.management.service</groupId>
     <artifactId>video-management-service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 </project>
