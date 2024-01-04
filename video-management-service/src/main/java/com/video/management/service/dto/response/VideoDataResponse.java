@@ -2,10 +2,8 @@ package com.video.management.service.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 @Schema(
         name = "Video",
         description = "Schema to hold video information."
@@ -34,4 +32,15 @@ public class VideoDataResponse {
     )
     private final String posterUrl;
 
+    private VideoDataResponse(String title, String plot, String genre, String director, String posterUrl) {
+        this.title = title;
+        this.plot = plot;
+        this.genre = genre;
+        this.director = director;
+        this.posterUrl = posterUrl;
+    }
+
+    public static VideoDataResponse create(String title, String plot, String genre, String director, String posterUrl) {
+        return new VideoDataResponse(title, plot, genre, director, posterUrl);
+    }
 }
