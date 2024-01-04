@@ -23,7 +23,7 @@ public class UserCommandController {
 
 
     @Operation(
-        summary = "Add video to favorites REST API",
+        summary = "ADD video to favorites REST API",
         description = "This API endpoint adds the specific video to user favorites."
     )
     @ApiResponses({
