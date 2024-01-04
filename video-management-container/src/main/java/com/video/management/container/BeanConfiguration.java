@@ -18,7 +18,7 @@ public class BeanConfiguration {
         return new UserCommandFacade() {
             @Override
             public MessageResponse addVideoToUserFavorites(String username, String title) {
-                return new MessageResponse("Success");
+                return MessageResponse.create("Success");
             }
         };
     }
