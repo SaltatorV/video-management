@@ -1,5 +1,6 @@
 package com.video.management.application.api;
 
+import com.video.management.service.dto.response.VideoDataResponse;
 import com.video.management.service.port.input.VideoQueryFacade;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,15 +23,22 @@ public class VideoQueryControllerTest {
     @Test
     public void shouldFetchSingleVideo() {
         //given
-        var expected = "Avatar: The Way of Water";
+        var expected = createAvatarTheWayOfWaterVideoResponse();
         doReturn(expected)
                 .when(facade)
-                .findVideo(expected);
+                .findVideo(expected.getTitle());
 
         //when
-        var result = videoQueryController.fetchVideo(expected);
+        var result = videoQueryController.fetchVideo(expected.getTitle());
 
         //then
         assertEquals(expected, result);
+    }
+
+    private VideoDataResponse createAvatarTheWayOfWaterVideoResponse() {
+        return VideoDataResponse.create("Avatar: The Way of Water",
+                "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora.",
+                "Action, Adventure, Fantasy", "James Cameron",
+                "scheme://host:port/images/{size}/{poster_name}");
     }
 }
