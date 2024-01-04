@@ -32,7 +32,7 @@ public class UserCommandController {
                     description = "HTTP Status CREATED"
             )
     })
-    @PostMapping("{username}")
+    @PutMapping("{username}")
     public MessageResponse addVideoToFavorites(
             @Parameter(description = "The name of the user for whom the favorite video is added.", required = true)
             @PathVariable String username,
