@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 @Schema(
     name = "Message",
     description = "Response to a user with a simple message."
@@ -16,4 +15,12 @@ public class MessageResponse {
             description = "Response message content.", example = "Successfully added the video to favorites."
     )
     private final String message;
+
+    private MessageResponse(String message) {
+        this.message = message;
+    }
+
+    public static MessageResponse create(String message) {
+        return new MessageResponse(message);
+    }
 }
