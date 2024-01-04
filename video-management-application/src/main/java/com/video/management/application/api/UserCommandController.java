@@ -13,7 +13,7 @@ public class UserCommandController {
     private final UserCommandFacade facade;
 
     @PostMapping("{username}")
-    public MessageResponse addMovieToFavorites(@PathVariable String username, @RequestBody String title) {
-        return facade.addMovieToUserFavorites(username, title);
+    public MessageResponse addVideoToFavorites(@PathVariable String username, @RequestBody String title) {
+        return facade.addVideoToUserFavorites(username, title);
     }
 }

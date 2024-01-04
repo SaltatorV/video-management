@@ -1,7 +1,6 @@
 package com.video.management.application.api;
 
 import com.video.management.service.port.input.UserQueryFacade;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,7 +22,7 @@ public class UserQueryControllerTest {
     private UserQueryController userQueryController;
 
     @Test
-    public void shouldFetch1FavoriteMovie() {
+    public void shouldFetch1FavoriteVideo() {
         //given
         var username = "username";
         var expected = createListWithOneVideo();

@@ -21,7 +21,7 @@ public class UserCommandControllerTest {
     private UserCommandController userCommandController;
 
     @Test
-    public void shouldAddMovieToFavorites() {
+    public void shouldAddVideoToFavorites() {
         //given
         var username = "username";
         var title = "Avatar: The Way of Water";
@@ -29,10 +29,10 @@ public class UserCommandControllerTest {
 
         doReturn(expected)
                 .when(facade)
-                .addMovieToUserFavorites(username, title);
+                .addVideoToUserFavorites(username, title);
 
         //when
-        var result = userCommandController.addMovieToFavorites(username, title);
+        var result = userCommandController.addVideoToFavorites(username, title);
 
         //then
         assertEquals(expected, result);
