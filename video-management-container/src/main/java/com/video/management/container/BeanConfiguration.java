@@ -39,6 +39,6 @@ public class BeanConfiguration {
             public Object findVideo(String title) {
                 return "Video-1";
             }
-        }
+        };
     }
 }
