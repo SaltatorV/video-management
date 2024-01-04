@@ -1,5 +1,6 @@
 package com.video.management.application.api;
 
+import com.video.management.service.dto.response.VideoDataResponse;
 import com.video.management.service.port.input.UserQueryFacade;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -36,7 +37,7 @@ public class UserQueryController {
             )
     })
     @GetMapping("{username}/favorites")
-    public List<Object> fetchUserFavoriteVideos(
+    public List<VideoDataResponse> fetchUserFavoriteVideos(
             @Parameter(description = "The name of the user for whom the favorite video is added.", required = true)
             @PathVariable String username) {
 
