@@ -1,5 +1,6 @@
 package com.video.management.application.api;
 
+import com.video.management.service.dto.command.AddToFavoriteCommand;
 import com.video.management.service.dto.response.MessageResponse;
 import com.video.management.service.port.input.UserCommandFacade;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,11 +33,11 @@ public class UserCommandController {
                     description = "HTTP Status CREATED"
             )
     })
-    @PostMapping("{username}")
+    @PutMapping("{username}")
     public MessageResponse addVideoToFavorites(
             @Parameter(description = "The name of the user for whom the favorite video is added.", required = true)
             @PathVariable String username,
-            @RequestBody String title) {
-        return facade.addVideoToUserFavorites(username, title);
+            @RequestBody AddToFavoriteCommand command) {
+        return facade.addVideoToUserFavorites(username, command);
     }
 }

@@ -1,5 +1,6 @@
 package com.video.management.application.api;
 
+import com.video.management.service.dto.command.AddToFavoriteCommand;
 import com.video.management.service.dto.response.MessageResponse;
 import com.video.management.service.port.input.UserCommandFacade;
 import org.junit.jupiter.api.Test;
@@ -24,15 +25,15 @@ public class UserCommandControllerTest {
     public void shouldAddVideoToFavorites() {
         //given
         var username = "username";
-        var title = "Avatar: The Way of Water";
+        var command = createAddToFavoriteCommand();
         var expected = createSuccessfullMessageResponse();
 
         doReturn(expected)
                 .when(facade)
-                .addVideoToUserFavorites(username, title);
+                .addVideoToUserFavorites(username, command);
 
         //when
-        var result = userCommandController.addVideoToFavorites(username, title);
+        var result = userCommandController.addVideoToFavorites(username, command);
 
         //then
         assertEquals(expected, result);
@@ -41,4 +42,9 @@ public class UserCommandControllerTest {
     private MessageResponse createSuccessfullMessageResponse() {
         return MessageResponse.create("Success");
     }
+
+    private AddToFavoriteCommand createAddToFavoriteCommand() {
+        return new AddToFavoriteCommand("Avatar: The Way of Water");
+    }
+
 }
