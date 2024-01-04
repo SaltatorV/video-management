@@ -1,6 +1,7 @@
 package com.video.management.container;
 
 import com.video.management.service.dto.response.MessageResponse;
+import com.video.management.service.dto.response.VideoDataResponse;
 import com.video.management.service.port.input.UserCommandFacade;
 import com.video.management.service.port.input.UserQueryFacade;
 import com.video.management.service.port.input.VideoQueryFacade;
@@ -36,8 +37,8 @@ public class BeanConfiguration {
     VideoQueryFacade videoQueryFacade() {
         return new VideoQueryFacade() {
             @Override
-            public Object findVideo(String title) {
-                return "Video-1";
+            public VideoDataResponse findVideo(String title) {
+                return VideoDataResponse.create("Test-1", "Test-1", "Test-1", "Test-1", "Test-1");
             }
         };
     }
