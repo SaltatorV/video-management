@@ -1,28 +1,44 @@
 package com.video.management.application.api;
 
-import org.junit.jupiter.api.BeforeEach;
+import com.video.management.service.dto.response.MessageResponse;
+import com.video.management.service.port.input.UserCommandFacade;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doReturn;
 
+@ExtendWith(MockitoExtension.class)
 public class UserCommandControllerTest {
+
+    @Mock
+    private UserCommandFacade facade;
+
+    @InjectMocks
     private UserCommandController userCommandController;
 
-    @BeforeEach
-    public void setup() {
-        userCommandController = new UserCommandController();
-    }
-
     @Test
-    public void shouldFetch1FavoriteMovie() {
+    public void shouldAddMovieToFavorites() {
         //given
         var username = "username";
         var title = "Avatar: The Way of Water";
+        var expected = createSuccessfullMessageResponse();
+
+        doReturn(expected)
+                .when(facade)
+                .addMovieToUserFavorites(username, title);
 
         //when
         var result = userCommandController.addMovieToFavorites(username, title);
 
         //then
-        assertEquals("success", result);
+        assertEquals(expected, result);
+    }
+
+    private MessageResponse createSuccessfullMessageResponse() {
+        return new MessageResponse("Success");
     }
 }
