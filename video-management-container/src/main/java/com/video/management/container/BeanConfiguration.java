@@ -1,5 +1,6 @@
 package com.video.management.container;
 
+import com.video.management.service.dto.command.AddToFavoriteCommand;
 import com.video.management.service.dto.response.MessageResponse;
 import com.video.management.service.dto.response.VideoDataResponse;
 import com.video.management.service.port.input.UserCommandFacade;
@@ -17,7 +18,7 @@ public class BeanConfiguration {
     UserCommandFacade userCommandFacade() {
         return new UserCommandFacade() {
             @Override
-            public MessageResponse addVideoToUserFavorites(String username, String title) {
+            public MessageResponse addVideoToUserFavorites(String username, AddToFavoriteCommand command) {
                 return MessageResponse.create("Success");
             }
         };
