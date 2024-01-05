@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 )
 public class MessageResponse {
     @Schema(
-            description = "Response message content.", example = "Successfully added the video to favorites."
+            description = "Response message content.", example = "Sample positive or negative message"
     )
     private final String message;
 
