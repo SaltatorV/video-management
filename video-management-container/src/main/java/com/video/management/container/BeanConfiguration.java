@@ -8,19 +8,21 @@ import com.video.management.service.port.input.UserCommandFacade;
 import com.video.management.service.port.input.UserQueryFacade;
 import com.video.management.service.port.input.VideoQueryFacade;
 import com.video.management.service.port.output.UserCommandRepository;
+import com.video.management.service.port.output.UserQueryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Configuration
 public class BeanConfiguration {
-
+    Set<UserSnapshot> snapshots = new HashSet<>();
     @Bean
     UserCommandRepository userCommandRepository() {
-        Set<UserSnapshot> snapshots = new HashSet<>();
+
         return new UserCommandRepository() {
             @Override
             public void addToFavorite(UserSnapshot snapshot) {
@@ -39,13 +41,16 @@ public class BeanConfiguration {
         };
     }
 
-
     @Bean
-    UserQueryFacade userQueryFacade() {
-        return new UserQueryFacade() {
+    UserQueryRepository userQueryRepository() {
+        return new UserQueryRepository() {
             @Override
-            public List<VideoDataResponse> findUserFavorites(String username) {
-                return List.of(createAvatarTheWayOfWaterVideoResponse());
+            public List<String> findUserFavoriteVideos(String username) {
+                return snapshots
+                        .stream()
+                        .filter(x->x.getUsername().equals(username))
+                        .map(UserSnapshot::getVideoTitle)
+                        .collect(Collectors.toList());
             }
         };
     }
