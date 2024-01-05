@@ -3,9 +3,11 @@ package com.video.management.service.dto.command;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Schema(
         name = "Add video to favorite command",
         description = "The purpose of this command is to add a specific video to the user favorites."
