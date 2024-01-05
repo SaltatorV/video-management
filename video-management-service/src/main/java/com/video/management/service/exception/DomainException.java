@@ -1,6 +1,6 @@
 package com.video.management.service.exception;
 
-public abstract class DomainException extends RuntimeException {
+abstract class DomainException extends RuntimeException {
     public DomainException(String message) {
         super(message);
     }
