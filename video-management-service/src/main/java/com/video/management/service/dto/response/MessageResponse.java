@@ -16,7 +16,7 @@ public class MessageResponse {
     )
     private final String message;
 
-    private MessageResponse(String message) {
+    MessageResponse(String message) {
         this.message = message;
     }
 
