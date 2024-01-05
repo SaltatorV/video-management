@@ -19,7 +19,6 @@
     <modules>
         <module>video-management-application</module>
         <module>video-management-service</module>
-        <module>video-management-domain</module>
         <module>video-management-container</module>
         <module>video-management-dataaccess</module>
     </modules>
