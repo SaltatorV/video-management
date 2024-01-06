@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
-@FeignClient(name = "omdb-api", url = "${omdb.api.url}", fallback = OmdbFallback.class)
+@FeignClient(name = "omdb-api", url = "${omdb.api.url}")
 public interface OmdbFeignClient {
     @GetMapping
     @Headers("Content-Type: application/json")
