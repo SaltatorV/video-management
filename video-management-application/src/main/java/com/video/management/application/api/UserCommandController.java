@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
         description = "The purpose of this REST API is to serve COMMANDs for the users in the system."
 )
 @RestController
-@RequestMapping("/users")
+@RequestMapping(path = "/users", produces = {MediaType.APPLICATION_JSON_VALUE})
 @RequiredArgsConstructor
 public class UserCommandController {
 
