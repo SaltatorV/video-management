@@ -34,6 +34,10 @@ public class UserQueryController {
             @ApiResponse(
                     responseCode = "200",
                     description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "503",
+                    description = "HTTP Status SERVICE_UNAVAILABLE"
             )
     })
     @GetMapping("{username}/favorites")

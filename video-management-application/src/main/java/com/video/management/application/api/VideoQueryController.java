@@ -31,6 +31,14 @@ public class VideoQueryController {
             @ApiResponse(
                     responseCode = "200",
                     description = "HTTP Status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "HTTP Status NOT_FOUND"
+            ),
+            @ApiResponse(
+                    responseCode = "503",
+                    description = "HTTP Status SERVICE_UNAVAILABLE"
             )
     })
     @GetMapping("{title}")

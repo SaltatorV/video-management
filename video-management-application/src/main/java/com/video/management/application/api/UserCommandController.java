@@ -33,10 +33,17 @@ public class UserCommandController {
                     responseCode = "201",
                     description = "HTTP Status CREATED"
             ),
-
             @ApiResponse(
                     responseCode = "409",
                     description = "HTTP Status CONFLICT"
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "HTTP Status NOT_FOUND"
+            ),
+            @ApiResponse(
+                    responseCode = "503",
+                    description = "HTTP Status SERVICE_UNAVAILABLE"
             )
     })
     @PutMapping("{username}")
