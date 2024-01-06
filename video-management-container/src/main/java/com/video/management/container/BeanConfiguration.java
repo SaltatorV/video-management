@@ -48,21 +48,4 @@ public class BeanConfiguration {
             }
         };
     }
-
-    @Bean
-    VideoQueryFacade videoQueryFacade() {
-        return new VideoQueryFacade() {
-            @Override
-            public VideoDataResponse findVideo(String title) {
-                return createAvatarTheWayOfWaterVideoResponse();
-            }
-        };
-    }
-
-    private VideoDataResponse createAvatarTheWayOfWaterVideoResponse() {
-        return VideoDataResponse.create("Avatar: The Way of Water",
-                "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora.",
-                "Action, Adventure, Fantasy", "James Cameron",
-                "scheme://host:port/images/{size}/{poster_name}");
-    }
 }

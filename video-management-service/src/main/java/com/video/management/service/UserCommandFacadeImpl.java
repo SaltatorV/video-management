@@ -21,7 +21,7 @@ class UserCommandFacadeImpl implements UserCommandFacade {
     public MessageResponse addVideoToUserFavorites(String username, AddToFavoriteCommand command) {
         UserSnapshot snapshot = createUserSnapshot(username, command);
 
-        if(isVideoTitleNotValid(snapshot.getVideoTitle())) {
+        if(isVideoNotExists(snapshot.getVideoTitle())) {
             throw new VideoNotExistsException();
         }
 
@@ -38,7 +38,7 @@ class UserCommandFacadeImpl implements UserCommandFacade {
         return UserSnapshot.create(username, command.getTitle());
     }
 
-    private boolean isVideoTitleNotValid(String title) {
+    private boolean isVideoNotExists(String title) {
         return !feignClient.isVideoExists(title).exists();
     }
 
