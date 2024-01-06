@@ -14,14 +14,14 @@ public class ErrorResponse extends MessageResponse{
     @Schema(
             description = "Error code", example = "409"
     )
-    private final String code;
+    private final int code;
 
-    private ErrorResponse(String code, String message) {
+    private ErrorResponse(int code, String message) {
         super(message);
         this.code = code;
     }
 
-    public static ErrorResponse create(String code, String message) {
+    public static ErrorResponse create(int code, String message) {
         return new ErrorResponse(code, message);
     };
 }

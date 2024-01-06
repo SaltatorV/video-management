@@ -9,7 +9,7 @@ public class ErrorResponseTest {
     @Test
     public void shouldCreateErrorResponse() {
         //given
-        var code = "409";
+        var code = 409;
         var message = "Alredy exists";
 
         //when
