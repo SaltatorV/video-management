@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(
@@ -39,6 +40,7 @@ public class UserCommandController {
             )
     })
     @PutMapping("{username}")
+    @ResponseStatus(HttpStatus.CREATED)
     public MessageResponse addVideoToFavorites(
             @Parameter(description = "The name of the user for whom the favorite video is added.", required = true)
             @PathVariable String username,
