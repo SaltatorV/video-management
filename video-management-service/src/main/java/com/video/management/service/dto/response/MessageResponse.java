@@ -11,7 +11,7 @@ import lombok.Getter;
 )
 public class MessageResponse {
     @Schema(
-            description = "Response message content.", example = "Sample positive or negative message"
+            description = "Response message content."
     )
     private final String message;
 

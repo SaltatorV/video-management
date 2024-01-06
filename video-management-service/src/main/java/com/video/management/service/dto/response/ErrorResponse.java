@@ -12,7 +12,7 @@ import lombok.Getter;
 public class ErrorResponse extends MessageResponse{
 
     @Schema(
-            description = "Error code", example = "409"
+            description = "Error code"
     )
     private final int code;
 

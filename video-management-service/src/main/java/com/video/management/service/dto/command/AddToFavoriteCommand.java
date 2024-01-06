@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Schema(
-        name = "Add video to favorite command",
+        name = "Add To Favorite COMMAND",
         description = "The purpose of this command is to add a specific video to the user favorites."
 
 )
