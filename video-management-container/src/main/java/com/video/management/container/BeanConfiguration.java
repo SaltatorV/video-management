@@ -1,11 +1,7 @@
 package com.video.management.container;
 
 import com.video.management.service.dto.UserSnapshot;
-import com.video.management.service.dto.command.AddToFavoriteCommand;
-import com.video.management.service.dto.response.MessageResponse;
 import com.video.management.service.dto.response.VideoDataResponse;
-import com.video.management.service.port.input.UserCommandFacade;
-import com.video.management.service.port.input.UserQueryFacade;
 import com.video.management.service.port.input.VideoQueryFacade;
 import com.video.management.service.port.output.UserCommandRepository;
 import com.video.management.service.port.output.UserQueryRepository;
