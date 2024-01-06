@@ -5,7 +5,7 @@ import com.video.management.service.exception.ExternalServiceNotAvailableExcepti
 
 public class OmdbFallback implements OmdbFeignClient{
     @Override
-    public VideoDataResponse fetchVideo(String title, String apikey) {
+    public VideoDataResponse fetchVideo(String title) {
         throw new ExternalServiceNotAvailableException();
     }
 }

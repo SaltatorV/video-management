@@ -1,12 +1,16 @@
 package com.video.management.service.client;
 
 import com.video.management.service.dto.response.VideoDataResponse;
+import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "omdb-api", url = "https://www.omdbapi.com",fallback = OmdbFallback.class)
+@Component
+@FeignClient(name = "omdb-api", url = "${omdb.api.url}", fallback = OmdbFallback.class)
 public interface OmdbFeignClient {
     @GetMapping
-    VideoDataResponse fetchVideo(@RequestParam("t")String title, @RequestParam("apikey") String apikey);
+    @Headers("Content-Type: application/json")
+    VideoDataResponse fetchVideo(@RequestParam("t")String title);
 }
