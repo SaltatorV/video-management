@@ -19,7 +19,6 @@
     <modules>
         <module>video-management-application</module>
         <module>video-management-service</module>
-        <module>video-management-domain</module>
         <module>video-management-container</module>
         <module>video-management-dataaccess</module>
     </modules>
@@ -38,6 +37,7 @@
 
         <spring-boot-starter.version>3.2.1</spring-boot-starter.version>
         <springdoc.version>2.3.0</springdoc.version>
+        <spring-cloud-openfeign.version>4.1.0</spring-cloud-openfeign.version>
         <lombok.version>1.18.30</lombok.version>
         <mockito-core.version>5.8.0</mockito-core.version>
         <maven-surefire-plugin.version>3.2.3</maven-surefire-plugin.version>
@@ -91,6 +91,11 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring-cloud-openfeign.version}</version>
             </dependency>
 
             <dependency>

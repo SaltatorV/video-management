@@ -2,7 +2,6 @@ package com.video.management.service.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
 @Schema(
@@ -12,11 +11,11 @@ import lombok.RequiredArgsConstructor;
 )
 public class MessageResponse {
     @Schema(
-            description = "Response message content.", example = "Successfully added the video to favorites."
+            description = "Response message content.", example = "Sample positive or negative message"
     )
     private final String message;
 
-    private MessageResponse(String message) {
+    MessageResponse(String message) {
         this.message = message;
     }
 
