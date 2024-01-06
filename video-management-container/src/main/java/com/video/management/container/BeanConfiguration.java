@@ -22,13 +22,11 @@ public class BeanConfiguration {
         return new UserCommandRepository() {
             @Override
             public void addToFavorite(UserSnapshot snapshot) {
-                System.out.println("Add video to fav: " + snapshot.getUsername() + " - " + snapshot.getVideoTitle());
                 snapshots.add(snapshot);
             }
 
             @Override
             public boolean existsBySnapshot(UserSnapshot snapshot) {
-                System.out.println(snapshots.contains(snapshot));
                 return snapshots
                         .stream()
                         .anyMatch(x-> x.getUsername().equals(snapshot.getUsername())
