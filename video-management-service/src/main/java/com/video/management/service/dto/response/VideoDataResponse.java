@@ -1,5 +1,6 @@
 package com.video.management.service.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 
@@ -14,23 +15,28 @@ public class VideoDataResponse {
     @Schema(
             description = "Video title", example = "Avatar: The Way of Water"
     )
-    private final String title;
+    @JsonProperty("Title")
+    private String title;
     @Schema(
             description = "Video plot", example = "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora."
     )
-    private final String plot;
+    @JsonProperty("Plot")
+    private String plot;
     @Schema(
             description = "Video genre", example = "Action, Adventure, Fantasy"
     )
-    private final String genre;
+    @JsonProperty("Genre")
+    private String genre;
     @Schema(
             description = "Video director", example = "James Cameron"
     )
-    private final String director;
+    @JsonProperty("Director")
+    private String director;
     @Schema(
             description = "Video poster", example = "scheme://host:port/images/{size}/{poster_name}"
     )
-    private final String posterUrl;
+    @JsonProperty("Poster")
+    private String posterUrl;
 
     private VideoDataResponse(String title, String plot, String genre, String director, String posterUrl) {
         this.title = title;
