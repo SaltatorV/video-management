@@ -2,7 +2,7 @@ package com.video.management.service;
 
 import com.video.management.service.client.OmdbFeignClient;
 import com.video.management.service.dto.response.VideoDataResponse;
-import com.video.management.service.exception.VideoNotExistsException;
+import com.video.management.service.exception.VideoNotFoundException;
 import com.video.management.service.port.input.VideoQueryFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class VideoQueryFacadeImpl implements VideoQueryFacade {
     @Override
     public VideoDataResponse findVideo(String title) {
         if(isVideoNotExists(title)) {
-            throw new VideoNotExistsException();
+            throw new VideoNotFoundException();
         }
 
         return feignClient.fetchVideo(title);

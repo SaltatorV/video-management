@@ -5,7 +5,7 @@ import com.video.management.service.dto.UserSnapshot;
 import com.video.management.service.dto.command.AddToFavoriteCommand;
 import com.video.management.service.dto.response.MessageResponse;
 import com.video.management.service.exception.UserFavoriteVideoAlreadyExistsException;
-import com.video.management.service.exception.VideoNotExistsException;
+import com.video.management.service.exception.VideoNotFoundException;
 import com.video.management.service.port.input.UserCommandFacade;
 import com.video.management.service.port.output.UserCommandRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ class UserCommandFacadeImpl implements UserCommandFacade {
         UserSnapshot snapshot = createUserSnapshot(username, command);
 
         if(isVideoNotExists(snapshot.getVideoTitle())) {
-            throw new VideoNotExistsException();
+            throw new VideoNotFoundException();
         }
 
         if(isSnapshotAlreadyExists(snapshot)) {

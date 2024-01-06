@@ -4,7 +4,7 @@ import com.video.management.service.client.OmdbFeignClient;
 import com.video.management.service.dto.command.AddToFavoriteCommand;
 import com.video.management.service.dto.response.VideoExistsResponse;
 import com.video.management.service.exception.UserFavoriteVideoAlreadyExistsException;
-import com.video.management.service.exception.VideoNotExistsException;
+import com.video.management.service.exception.VideoNotFoundException;
 import com.video.management.service.port.output.UserCommandRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -80,7 +80,7 @@ public class UserCommandFacadeImplTest {
                 .isVideoExists(command.getTitle());
 
         //when
-        assertThrows(VideoNotExistsException.class,
+        assertThrows(VideoNotFoundException.class,
                 () -> facade.addVideoToUserFavorites(username, command));
     }
 

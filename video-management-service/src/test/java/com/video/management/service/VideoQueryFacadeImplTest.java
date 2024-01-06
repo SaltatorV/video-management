@@ -3,7 +3,7 @@ package com.video.management.service;
 import com.video.management.service.client.OmdbFeignClient;
 import com.video.management.service.dto.response.VideoDataResponse;
 import com.video.management.service.dto.response.VideoExistsResponse;
-import com.video.management.service.exception.VideoNotExistsException;
+import com.video.management.service.exception.VideoNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -52,7 +52,7 @@ public class VideoQueryFacadeImplTest {
                 .isVideoExists(title);
 
         //when
-        assertThrows(VideoNotExistsException.class, () -> facade.findVideo(title));
+        assertThrows(VideoNotFoundException.class, () -> facade.findVideo(title));
 
     }
 
