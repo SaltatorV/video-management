@@ -1,5 +1,6 @@
 package com.video.management.service;
 
+import com.video.management.service.client.OmdbFeignClient;
 import com.video.management.service.port.output.UserQueryRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +18,8 @@ public class UserQueryFacadeImplTest {
 
     @Mock
     private UserQueryRepository repository;
-
+    @Mock
+    private OmdbFeignClient feignClient;
     @InjectMocks
     private UserQueryFacadeImpl facade;
 

@@ -1,30 +1,34 @@
 package com.video.management.service;
 
+import com.video.management.service.client.OmdbFeignClient;
 import com.video.management.service.dto.response.VideoDataResponse;
 import com.video.management.service.port.input.UserQueryFacade;
 import com.video.management.service.port.output.UserQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 class UserQueryFacadeImpl implements UserQueryFacade {
     private final UserQueryRepository repository;
-
+    private final OmdbFeignClient omdbFeignClient;
 
     @Override
     public List<VideoDataResponse> findUserFavorites(String username) {
         List<String> favoriteVideos = repository.findUserFavoriteVideos(username);
-        return mapStringToResponse(favoriteVideos);
+
+        return fetchVideoData(favoriteVideos);
     }
 
-    private List<VideoDataResponse> mapStringToResponse(List<String> videos) {
-        return videos
-                .stream()
-                .map(title -> VideoDataResponse.create(title, title, title, title, title))
-                .collect(Collectors.toList());
+    private List<VideoDataResponse> fetchVideoData(List<String> titles) {
+        List<VideoDataResponse> response = new ArrayList<>();
+
+        titles
+            .forEach(title -> response.add(omdbFeignClient.fetchVideo(title)));
+
+        return response;
     }
 }
