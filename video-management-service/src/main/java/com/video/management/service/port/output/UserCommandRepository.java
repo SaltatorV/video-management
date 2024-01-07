@@ -4,5 +4,4 @@ import com.video.management.service.dto.UserSnapshot;
 
 public interface UserCommandRepository {
     void addToFavorite(UserSnapshot snapshot);
-    boolean existsBySnapshot(UserSnapshot snapshot);
 }
