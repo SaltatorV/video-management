@@ -6,6 +6,7 @@ import com.video.management.service.dto.response.VideoExistsResponse;
 import com.video.management.service.exception.UserFavoriteVideoAlreadyExistsException;
 import com.video.management.service.exception.VideoNotFoundException;
 import com.video.management.service.port.output.UserCommandRepository;
+import com.video.management.service.port.output.UserQueryRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,7 +22,9 @@ import static org.mockito.Mockito.doReturn;
 public class UserCommandFacadeImplTest {
 
     @Mock
-    private UserCommandRepository repository;
+    private UserCommandRepository commandRepository;
+    @Mock
+    private UserQueryRepository queryRepository;
     @Mock
     private OmdbFeignClient feignClient;
     @InjectMocks
@@ -38,7 +41,7 @@ public class UserCommandFacadeImplTest {
                 .isVideoExists(command.getTitle());
 
         doReturn(false)
-                .when(repository)
+                .when(queryRepository)
                 .existsBySnapshot(any());
 
 
@@ -61,7 +64,7 @@ public class UserCommandFacadeImplTest {
                 .isVideoExists(command.getTitle());
 
         doReturn(true)
-                .when(repository)
+                .when(queryRepository)
                 .existsBySnapshot(any());
 
         //when
