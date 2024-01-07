@@ -8,6 +8,7 @@ import com.video.management.service.exception.UserFavoriteVideoAlreadyExistsExce
 import com.video.management.service.exception.VideoNotFoundException;
 import com.video.management.service.port.input.UserCommandFacade;
 import com.video.management.service.port.output.UserCommandRepository;
+import com.video.management.service.port.output.UserQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 class UserCommandFacadeImpl implements UserCommandFacade {
 
-    private final UserCommandRepository repository;
+    private final UserCommandRepository commandRepository;
+    private final UserQueryRepository queryRepository;
     private final OmdbFeignClient feignClient;
     @Override
     public MessageResponse addVideoToUserFavorites(String username, AddToFavoriteCommand command) {
@@ -29,7 +31,7 @@ class UserCommandFacadeImpl implements UserCommandFacade {
             throw new UserFavoriteVideoAlreadyExistsException();
         }
 
-        repository.addToFavorite(snapshot);
+        commandRepository.addToFavorite(snapshot);
 
         return MessageResponse.create("Added video to favorites.");
     }
@@ -43,6 +45,6 @@ class UserCommandFacadeImpl implements UserCommandFacade {
     }
 
     private boolean isSnapshotAlreadyExists(UserSnapshot snapshot) {
-        return repository.existsBySnapshot(snapshot);
+        return queryRepository.existsBySnapshot(snapshot);
     }
 }

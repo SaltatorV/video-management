@@ -40,6 +40,7 @@
         <spring-cloud-openfeign.version>4.1.0</spring-cloud-openfeign.version>
         <lombok.version>1.18.30</lombok.version>
         <mockito-core.version>5.8.0</mockito-core.version>
+        <h2.version>2.2.224</h2.version>
         <maven-surefire-plugin.version>3.2.3</maven-surefire-plugin.version>
     </properties>
 
@@ -88,6 +89,11 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-jpa</artifactId>
+                <version>${spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${springdoc.version}</version>
@@ -109,6 +115,11 @@
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito-core.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
