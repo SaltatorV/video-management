@@ -5,7 +5,9 @@ import com.video.management.dataaccess.repository.UserRepository;
 import com.video.management.service.dto.UserSnapshot;
 import com.video.management.service.port.output.UserCommandRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class UserCommandRepositoryImpl implements UserCommandRepository {
 
