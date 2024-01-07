@@ -4,9 +4,13 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableFeignClients(basePackages = {"com.video.management"})
+@EnableJpaRepositories(basePackages = {"com.video.management"})
+@EntityScan(basePackages = {"com.video.management"})
 @SpringBootApplication(scanBasePackages = {"com.video.management"})
 @OpenAPIDefinition(
         info = @Info(
