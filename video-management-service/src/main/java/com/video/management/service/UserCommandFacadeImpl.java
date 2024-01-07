@@ -11,8 +11,10 @@ import com.video.management.service.port.output.UserCommandRepository;
 import com.video.management.service.port.output.UserQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 @Service
+@Validated
 @RequiredArgsConstructor
 class UserCommandFacadeImpl implements UserCommandFacade {
 

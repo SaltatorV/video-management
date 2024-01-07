@@ -35,6 +35,10 @@ public class UserCommandController {
                     description = "HTTP Status CREATED"
             ),
             @ApiResponse(
+                    responseCode = "400",
+                    description = "HTTP Status BAD_REQUEST"
+            ),
+            @ApiResponse(
                     responseCode = "409",
                     description = "HTTP Status CONFLICT"
             ),

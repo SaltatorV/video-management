@@ -1,6 +1,7 @@
 package com.video.management.service.dto.command;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,5 +18,6 @@ public class AddToFavoriteCommand {
     @Schema(
             description = "Name of the video to be added to favorites.", example = "Avatar: The Way of Water"
     )
+    @NotEmpty(message = "Title may not be empty")
     private String title;
 }
