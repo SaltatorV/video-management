@@ -27,5 +27,9 @@
             <groupId>com.video.management.application</groupId>
             <artifactId>video-management-application</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.video.management.dataaccess</groupId>
+            <artifactId>video-management-dataaccess</artifactId>
+        </dependency>
     </dependencies>
 </project>
