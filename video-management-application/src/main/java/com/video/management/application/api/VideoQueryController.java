@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +46,7 @@ public class VideoQueryController {
     @GetMapping("{title}")
     public VideoDataResponse fetchVideo(
             @Parameter(description = "Name of the video whose data is to be fetched.", required = true)
+            @Size(max = 255, message = "Video title cannot exceed 50 characters.")
             @PathVariable String title) {
         return facade.findVideo(title);
     }
