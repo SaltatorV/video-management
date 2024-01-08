@@ -4,26 +4,25 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.video.management.container.VideoManagementMain;
 import com.video.management.service.client.OmdbFeignClient;
 import com.video.management.service.dto.command.AddToFavoriteCommand;
-import com.video.management.service.dto.response.VideoExistsResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static com.video.management.FeignClientManager.videoExists;
+import static com.video.management.FeignClientManager.videoNotExists;
 import static com.video.management.ResponseManager.*;
 import static org.mockito.Mockito.doReturn;
 
 @SpringBootTest(classes = VideoManagementMain.class)
 @AutoConfigureMockMvc
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-@EnableFeignClients
 public class UserCommandControllerIntegrationTest {
 
     private final String ADD_TO_FAV_URL = "http://localhost:8080/users/%s";
@@ -47,7 +46,7 @@ public class UserCommandControllerIntegrationTest {
                 .isVideoExists(command.getTitle());
 
         //when
-        MvcResult result = performAddToFavoritesRequest(validUsername(), command);
+        var result = performAddToFavoritesRequest(validUsername(), command);
 
         //then
         isStatus201(result);
@@ -59,7 +58,7 @@ public class UserCommandControllerIntegrationTest {
         var command = addAvatarCommand();
 
         //when
-        MvcResult result = performAddToFavoritesRequest(tooLongUsername(), command);
+        var result = performAddToFavoritesRequest(tooLongUsername(), command);
 
         //then
         isStatus400(result);
@@ -70,7 +69,7 @@ public class UserCommandControllerIntegrationTest {
         var command = addTooLongCommand();
 
         //when
-        MvcResult result = performAddToFavoritesRequest(validUsername(), command);
+        var result = performAddToFavoritesRequest(validUsername(), command);
 
         //then
         isStatus400(result);
@@ -81,7 +80,7 @@ public class UserCommandControllerIntegrationTest {
         var command = addEmptyCommand();
 
         //when
-        MvcResult result = performAddToFavoritesRequest(validUsername(), command);
+        var result = performAddToFavoritesRequest(validUsername(), command);
 
         //then
         isStatus400(result);
@@ -97,7 +96,7 @@ public class UserCommandControllerIntegrationTest {
                 .isVideoExists(command.getTitle());
 
         //when
-        MvcResult result = performAddToFavoritesRequest(validUsername(), command);
+        var result = performAddToFavoritesRequest(validUsername(), command);
 
         //then
         isStatus404(result);
@@ -115,7 +114,7 @@ public class UserCommandControllerIntegrationTest {
         performAddToFavoritesRequest(validUsername(), command);
 
         //when
-        MvcResult result = performAddToFavoritesRequest(validUsername(), command);
+        var result = performAddToFavoritesRequest(validUsername(), command);
 
         //then
         isStatus409(result);
@@ -144,13 +143,6 @@ public class UserCommandControllerIntegrationTest {
     }
     private String tooLongUsername() {
         return "user12345678901234567890123456789012345678901234567890";
-    }
-
-    private VideoExistsResponse videoExists(AddToFavoriteCommand command) {
-        return new VideoExistsResponse(command.getTitle());
-    }
-    private VideoExistsResponse videoNotExists() {
-        return new VideoExistsResponse(null);
     }
 
     private MvcResult performAddToFavoritesRequest(String username, AddToFavoriteCommand command) throws Exception {
