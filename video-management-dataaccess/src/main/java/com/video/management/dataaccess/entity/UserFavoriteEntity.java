@@ -1,9 +1,6 @@
 package com.video.management.dataaccess.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @Builder
+@Table(name = "user_favorite")
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserFavoriteEntity {
