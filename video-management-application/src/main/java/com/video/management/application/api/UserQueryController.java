@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,6 +45,7 @@ public class UserQueryController {
     @GetMapping("{username}/favorites")
     public List<VideoDataResponse> fetchUserFavoriteVideos(
             @Parameter(description = "The name of the user for whom the favorite video is added.", required = true)
+            @Size(max = 50, message = "Username cannot exceed 50 characters.")
             @PathVariable String username) {
 
         return facade.findUserFavorites(username);

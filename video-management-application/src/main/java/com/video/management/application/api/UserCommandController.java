@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -55,6 +56,7 @@ public class UserCommandController {
     @ResponseStatus(HttpStatus.CREATED)
     public MessageResponse addVideoToFavorites(
             @Parameter(description = "The name of the user for whom the favorite video is added.", required = true)
+            @Size(max = 50, message = "Username cannot exceed 50 characters.")
             @PathVariable String username,
             @RequestBody AddToFavoriteCommand command) {
         return facade.addVideoToUserFavorites(username, command);
