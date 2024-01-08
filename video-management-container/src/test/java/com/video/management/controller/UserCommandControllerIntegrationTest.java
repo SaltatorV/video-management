@@ -18,14 +18,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static com.video.management.FeignClientManager.videoExists;
 import static com.video.management.FeignClientManager.videoNotExists;
 import static com.video.management.ResponseManager.*;
+import static com.video.management.URLManager.ADD_TO_FAV_URL;
 import static org.mockito.Mockito.doReturn;
 
 @SpringBootTest(classes = VideoManagementMain.class)
 @AutoConfigureMockMvc
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class UserCommandControllerIntegrationTest {
-
-    private final String ADD_TO_FAV_URL = "http://localhost:8080/users/%s";
 
     @MockBean
     private OmdbFeignClient feignClient;
