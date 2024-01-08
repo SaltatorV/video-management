@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ResponseManager {
 
+    public static void isStatus200(MvcResult result) {
+        isStatus(200, result);
+    }
     public static void isStatus201(MvcResult result) {
         isStatus(201, result);
     }
