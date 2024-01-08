@@ -6,10 +6,19 @@ import com.video.management.service.dto.response.VideoExistsResponse;
 
 public class FeignClientManager {
     public static VideoExistsResponse videoExists(AddToFavoriteCommand command) {
-        return new VideoExistsResponse(command.getTitle());
+        return createVideoExistsResponse(command.getTitle());
     }
+
+    public static VideoExistsResponse videoExists(String title) {
+        return createVideoExistsResponse(title);
+    }
+
     public static VideoExistsResponse videoNotExists() {
-        return new VideoExistsResponse(null);
+        return createVideoExistsResponse(null);
+    }
+
+    private static VideoExistsResponse createVideoExistsResponse(String title) {
+        return new VideoExistsResponse(title);
     }
 
     public static VideoDataResponse createVideoData(String title) {

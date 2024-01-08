@@ -31,8 +31,6 @@ import static org.mockito.Mockito.doReturn;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class UserQueryControllerIntegrationTest {
 
-
-
     @MockBean
     private OmdbFeignClient feignClient;
 
@@ -88,7 +86,6 @@ public class UserQueryControllerIntegrationTest {
 
 
     private MvcResult performFetchUserFavoriteVideos(String username) throws Exception {
-        System.out.println(String.format(FETCH_FAV_VIDEOS_URL, username));
         return mockMvc
                 .perform(MockMvcRequestBuilders.get(String.format(FETCH_FAV_VIDEOS_URL, username))
                         .contentType(MediaType.APPLICATION_JSON))
